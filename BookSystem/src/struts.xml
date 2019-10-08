@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<!-- #  struts.objectFactory = spring	将action的创建交给spring容器	
+			struts.objectFactory.spring.autoWire = name spring负责装配Action依赖属性
+			-->
+	<constant name="struts.objectFactory" value="spring"></constant>
+
+	<package name="crm" namespace="/" extends="struts-default" >
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.RuntimeException"></exception-mapping>
+		</global-exception-mappings>
+	
+		<action name="ManagerAction_*" class="managerAction" method="{1}" >
+			<result name="list"  >/jsp/manager/list.jsp</result>
+			<result name="add" type="redirectAction">ManagerAction_list</result>
+			<result name="editUI">/jsp/manager/edit.jsp</result>
+			<result name="update" type="redirectAction">ManagerAction_list</result>
+			<result name="delete" type="redirectAction">ManagerAction_list</result>
+		</action>
+		
+		<action name="StudentAction_*" class="studentAction" method="{1}">
+			<result name="list">/jsp/student/list.jsp</result>
+			<result name="add" type="redirectAction">StudentAction_list</result>
+			<result name="editUI">/jsp/student/edit.jsp</result>
+			<result name="update" type="redirectAction">StudentAction_list</result>
+			<result name="delete" type="redirectAction">StudentAction_list</result>
+		</action>
+		
+		<action name="CategoryAction_*" class="categoryAction" method="{1}">
+			<result name="list">/jsp/category/list.jsp</result>
+			<result name="add" type="redirectAction">CategoryAction_list</result>
+			<result name="editUI">/jsp/category/edit.jsp</result>
+			<result name="update" type="redirectAction">CategoryAction_list</result>
+			<result name="delete" type="redirectAction">CategoryAction_list</result>
+		</action>
+		
+		<action name="BookAction_*" class="bookAction" method="{1}">
+			<result name="list">/jsp/book/list.jsp</result>
+			<result name="add" type="redirectAction">BookAction_list</result>
+			<result name="addUI">/jsp/book/add.jsp</result>
+			<result name="editUI">/jsp/book/edit.jsp</result>
+			<result name="update" type="redirectAction">BookAction_list</result>
+			<result name="delete" type="redirectAction">BookAction_list</result>
+		</action>
+		
+		<action name="BorrowAction_*" class="borrowAction" method="{1}">
+			<result name="list">/jsp/borrow/list.jsp</result>
+			<result name="add" type="redirectAction">BorrowAction_list</result>
+			<result name="delete" type="redirectAction">BorrowAction_list</result>
+			<result name="editUI">/jsp/borrow/edit.jsp</result>
+			<result name="update" type="redirectAction">BorrowAction_list</result>
+		</action>
+		
+		<action name="Login" class="loginServlet">
+			<result name="no" type="redirect">/login.jsp</result>
+			<result name="studentPass" type="redirect">/indexStudent.html</result>
+			<result name="managerPass" type="redirect">/index.htm</result>
+		</action>
+		
+		<action name="StudentUIAction_*" class="studentUIAction" method="{1}">
+			<result name="list">/jsp/studentUI/list.jsp</result>
+			<result name="listHistory">/jsp/studentUI/listHistory.jsp</result>
+		</action>
+	</package>
+</struts>
+	
