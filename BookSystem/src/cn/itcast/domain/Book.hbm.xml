@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+
+	<class name="Book" table="book" >
+		
+		<id name="book_id">
+			<generator class="native"></generator>
+		</id>
+	
+		<property name="book_num" column="book_num" unique="true"></property>
+		<property name="book_image" column="book_image" ></property>
+		<property name="book_name" column="book_name" ></property>
+		<property name="writer" column="writer" ></property>
+		<property name="price" column="price" ></property>
+		<property name="pubcompany" column="pubcompany" ></property>
+		<property name="buydate" column="buydate" ></property>
+		<property name="pubdate" column="pubdate" ></property>
+		<property name="giveback" column="giveback" ></property>
+		
+		<set name="borrows" cascade="delete">
+			<key column="book_num" property-ref="book_num"></key>
+			<one-to-many class="Borrow"/>
+		</set>
+		
+		<many-to-one name="category" column="category_num" class="Category" property-ref="category_num"></many-to-one>
+		
+	</class>
+</hibernate-mapping>

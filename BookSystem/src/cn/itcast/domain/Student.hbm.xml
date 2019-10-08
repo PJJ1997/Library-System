@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+
+	<class name="Student" table="student" >
+		
+		<id name="stu_id"  >
+			<generator class="native"></generator>
+		</id>
+	
+		<property name="stu_num" column="stu_num" unique="true"></property>
+		<property name="stu_name" column="stu_name" ></property>
+		<property name="credit_id" column="credit_id" ></property>
+		<property name="academy" column="academy" ></property>
+		<property name="profession" column="profession" ></property>
+		<property name="class_name" column="class_name" ></property>
+		<property name="sex" column="sex" ></property>
+		<property name="tel" column="tel" ></property>
+		<property name="email" column="email" ></property>
+		<property name="enter_time" column="enter_time" ></property>
+		
+		<set name="borrows" cascade="delete">
+			<key column="stu_num" property-ref="stu_num"></key>
+			<one-to-many class="Borrow"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

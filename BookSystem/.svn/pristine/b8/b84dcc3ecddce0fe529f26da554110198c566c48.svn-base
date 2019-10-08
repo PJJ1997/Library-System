@@ -1,0 +1,4 @@
+jdbc.jdbcUrl=jdbc:mysql:///crm_32
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.user=root
+jdbc.password=1234

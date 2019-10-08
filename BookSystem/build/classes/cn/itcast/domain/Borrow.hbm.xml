@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.domain" >
+
+	<class name="Borrow" table="borrow" >
+		
+		<id name="borrow_id"  >
+			<generator class="native"></generator>
+		</id>
+	
+		<property name="borrow_time" column="borrow_time" ></property>
+		<property name="return_time" column="return_time" ></property>
+		<property name="ticket" column="ticket" ></property>
+		<property name="exprie" column="exprie" ></property>
+
+		<many-to-one name="student" class="Student" column="stu_num" property-ref="stu_num"></many-to-one>	
+		<many-to-one name="book" class="Book" column="book_num" property-ref="book_num"></many-to-one>	
+	</class>
+</hibernate-mapping>
